@@ -18,6 +18,17 @@ public class Person {
         else {System.out.print(" y soy un chico");
         }
         System.out.println("");
-        System.out.println("*********************************************");
+        System.out.println("");
+    }
+    //otra forma
+    String getPersonInfo (){
+        /*
+        %s - String
+        %d - int
+        %b - boolean
+        */
+        return String.format(
+                "Name: %s  lastname: %s Age: %d Is female? %b",
+                name, lastname, age, isFemale);
     }
 }
