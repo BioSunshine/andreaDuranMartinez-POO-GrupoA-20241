@@ -16,7 +16,7 @@ public class Producto {
         return name;
     }
     public void setName(String name){
-        if (name equals("")) {
+        if (name == "") {
             System.out.println("El nombre no puede ser nulo");
         }
         else { this.name=name;
