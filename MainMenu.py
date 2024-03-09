@@ -18,7 +18,7 @@ class MainMenu:
                 if not Bank.get_employee_list():
                     print("Actualmente no hay nadie en el registro :[")
                 else:
-                    Operations.operate_accounts
+                    Operations.operate_accounts()
             elif opt == 0:
                 flag = False
             else:
