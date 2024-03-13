@@ -41,7 +41,7 @@ public class Library {
         int option = ConsoleReader.sc.nextInt();
         option--;
         Users Userselected = Library.getUserlist().get(option);
-        System.out.println("You choosed: "+ " code: "+Userselected.getId()+"Name: "+Userselected.getName()+" Lastname: "+Userselected.getLastname()+" Age: "+Userselected.getAge());
+        System.out.println("You choosed: "+ " code: "+Userselected.getId()+" | Name: "+Userselected.getName()+" | Lastname: "+Userselected.getLastname()+" | Age: "+Userselected.getAge());
         ////////////////////////////
         System.out.println("Choose the book the client wants to rent: ");
         int id = 0;
@@ -59,11 +59,12 @@ public class Library {
         //Hasta aquí ya eligió el libro
 
         Books bookselected = Booklist.get(selection);
-        System.out.println("You selected:  Title: "+bookselected.getTitle()+"Author: "+bookselected.getAuthor());
-        Userselected.getListRentedBooks().add(bookselected); //Se agrega libro a la lista personal del usuario
-        Userselected.setHasRentedBook(true);
-        bookselected.setItsAvailable(false); //aquí cambio a que ya no esta disponible
-        System.out.println("Now the rent is authorized \n the client can take the book ");
+        System.out.println("You selected:\n  Title: "+bookselected.getTitle()+" | Author: "+bookselected.getAuthor());
+        //Userselected.getListRentedBooks().add(bookselected); //Se agrega libro a la lista personal del usuario
+        Userlist.get(option).rentABook(bookselected);
+        Userlist.get(option).setHasRentedBook(true);
+        Booklist.get(selection).setItsAvailable(false); //aquí cambio a que ya no esta disponible
+        System.out.println(" >>>Now the rent is authorized \n > The client can take the book ");
     }
     public static void returnBook(){//si tengo uno para rentar tengo que hacer uno para devolver y que el libro vuelva a estar disponible
         System.out.println("Select the client who wants to return a book");
@@ -118,7 +119,7 @@ public class Library {
         int ID=0;
         for(Books availables : Library.getBooklist()){
             if (availables.isItsAvailable()){
-                System.out.println("|ID: "+ (ID+1)+"code: "+availables.getId()+" | Title: "+availables.getTitle()+" | Author: "+availables.getAuthor()+" | Publication year: "+availables.getYear());
+                System.out.println("|ID: "+ (ID+1)+" | code: "+availables.getId()+" | Title: "+availables.getTitle()+" | Author: "+availables.getAuthor()+" | Publication year: "+availables.getYear());
             }
             ID++;
         }

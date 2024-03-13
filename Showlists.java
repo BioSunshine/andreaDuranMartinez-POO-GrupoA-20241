@@ -39,7 +39,7 @@ public class Showlists {
                     int ID=0;
                     for(Books rentedBooks : Library.getBooklist()){
                         if (!rentedBooks.isItsAvailable()){
-                            System.out.println("|ID: "+(ID+1)+"code: "+rentedBooks.getId()+" | Title: "+rentedBooks.getTitle()+"| Author: "+rentedBooks.getAuthor()+" | Publication year: "+rentedBooks.getYear());
+                            System.out.println("|ID: "+(ID+1)+" | code: "+rentedBooks.getId()+" | Title: "+rentedBooks.getTitle()+"| Author: "+rentedBooks.getAuthor()+" | Publication year: "+rentedBooks.getYear());
                         }
                         ID++;
                     }

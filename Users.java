@@ -5,7 +5,7 @@ public class Users {
     private String name;
     private String lastname;
     private int age;
-    private static ArrayList<Books> listRentedBooks = new ArrayList<>();
+    private ArrayList<Books> listRentedBooks = new ArrayList<>();
     private boolean hasRentedBook;
     private int timesRented;
     private boolean hasBoughtABook; //comprado un libro
@@ -65,13 +65,13 @@ public class Users {
         return age;
     }
 
+    public void addBook(Books book){
+        listRentedBooks.add(book);
+    }
     public void setAge(int age) {
         this.age = age;
     }
 
-    public static void setListRentedBooks(ArrayList<Books> listRentedBooks) {
-        Users.listRentedBooks = listRentedBooks;
-    }
 
     public boolean isHasRentedBook() {
         return hasRentedBook;
@@ -93,7 +93,7 @@ public class Users {
         return listRentedBooks;
     }
 
-    public static void rentABook (Books newBook){
+    public void rentABook (Books newBook){
         listRentedBooks.add(newBook);
     }
 
@@ -106,9 +106,9 @@ public class Users {
         }
         int selection = ConsoleReader.sc.nextInt();
         selection--;
-        listRentedBooks.remove(selection);
         Books bookSelected = listRentedBooks.get(selection);
         bookSelected.setItsAvailable(true);
+        listRentedBooks.remove(selection);
         System.out.println("The book has been returned");
 
     }
