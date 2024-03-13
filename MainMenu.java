@@ -27,7 +27,7 @@ public class MainMenu {
                      \t3) Rent a Book
                      \t4) Return a Book
                      \t5) Buy a Book
-                     \t6) See the lists 
+                     \t6) See the lists
                      \t0) Exit system""");
             int option= ConsoleReader.sc.nextInt();
             switch (option){

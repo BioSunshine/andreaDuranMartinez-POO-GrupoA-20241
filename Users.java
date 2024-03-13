@@ -7,7 +7,6 @@ public class Users {
     private int age;
     private ArrayList<Books> listRentedBooks = new ArrayList<>();
     private boolean hasRentedBook;
-    private int timesRented;
     private boolean hasBoughtABook; //comprado un libro
 
     public Users(String id, String name, String lastname, int age) {
@@ -20,12 +19,6 @@ public class Users {
     public String getLastname() {
         return lastname;
     }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-
 
     @Override
     public String toString() {
@@ -48,45 +41,19 @@ public class Users {
     public String getId() {
         return id;
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getAge() {
         return age;
     }
-
-    public void addBook(Books book){
-        listRentedBooks.add(book);
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-
     public boolean isHasRentedBook() {
         return hasRentedBook;
     }
 
     public void setHasRentedBook(boolean hasRentedBook) {
         this.hasRentedBook = hasRentedBook;
-    }
-
-    public int getTimesRented() {
-        return timesRented;
-    }
-
-    public void setTimesRented(int timesRented) {
-        this.timesRented = timesRented;
     }
 
     public ArrayList<Books> getListRentedBooks() {

@@ -8,16 +8,8 @@ public class Library {
         return Userlist;
     }
 
-    public static void setUserlist(ArrayList<Users> userlist) {
-        Library.Userlist = userlist;
-    }
-
     public static ArrayList<Books> getBooklist() {
         return Booklist;
-    }
-
-    public static void setBooklist(ArrayList<Books> booklist) {
-        Library.Booklist = booklist;
     }
 
     public static void addUser(Users newUser){
@@ -47,7 +39,6 @@ public class Library {
         int id = 0;
         //bookid, title, author, year
         //mostrar solo titulos disponibles
-        ArrayList<Books> availableBooks = new ArrayList<>();
         for(Books book : Booklist){ //objeto loquesea : lista
             if(book.isItsAvailable()) {
                 System.out.println("| ID " + (id + 1) + " Id: " + book.getId() + " Title: " + book.getTitle() + " Author: " + book.getAuthor() + " Publication Year: " + book.getYear());
@@ -57,8 +48,11 @@ public class Library {
         int selection = ConsoleReader.sc.nextInt();
         selection--;
         //Hasta aquí ya eligió el libro
-
         Books bookselected = Booklist.get(selection);
+        if(!bookselected.isItsAvailable()){
+            System.out.println("Sorry, that book isn't available, even it is not shown in the list");
+            return;
+        }
         System.out.println("You selected:\n  Title: "+bookselected.getTitle()+" | Author: "+bookselected.getAuthor());
         //Userselected.getListRentedBooks().add(bookselected); //Se agrega libro a la lista personal del usuario
         Userlist.get(option).rentABook(bookselected);
@@ -102,6 +96,10 @@ public class Library {
         int input = ConsoleReader.sc.nextInt();
         input --;
         Books bookSelected = Booklist.get(input);
+        if(!bookSelected.isItsAvailable()){
+            System.out.println("Sorry, that book isn't available, even it is not shown in the list");
+            return;
+        }
         System.out.println("Enter the price: ");
         double price = ConsoleReader.sc.nextDouble();
         if (price<0){
