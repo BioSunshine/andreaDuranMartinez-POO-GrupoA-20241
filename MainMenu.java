@@ -26,17 +26,17 @@ public class MainMenu {
                      \t2) Register a Book
                      \t3) Rent a Book
                      \t4) Return a Book
-                     \t5) See the lists 
+                     \t5) Buy a Book
+                     \t6) See the lists 
                      \t0) Exit system""");
             int option= ConsoleReader.sc.nextInt();
             switch (option){
-                case 1 -> {ConsoleReader.sc.nextLine();
-                            UsersController.createUser();}
-                case 2 -> {ConsoleReader.sc.nextLine();
-                    Books.registerBook();}
+                case 1 -> UsersController.createUser();
+                case 2 -> Books.registerBook();
                 case 3 -> Library.rentABook();
                 case 4 -> Library.returnBook();
-                case 5 -> Showlists.menuLists();
+                case 5 -> Library.buyABook();
+                case 6 -> Showlists.menuLists();
                 case 0 -> band=false;
                 default -> System.out.println("Invalid input...");
             }

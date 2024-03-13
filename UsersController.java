@@ -1,6 +1,7 @@
 public class UsersController {
 
     public static void createUser(){
+        ConsoleReader.sc.nextLine();
         System.out.println("Introduce the name: ");
         String name = ConsoleReader.sc.nextLine();
         System.out.println("Introduce the lastname: ");

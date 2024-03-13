@@ -26,17 +26,18 @@ public class Library {
     public static void addBook(Books newBook){
         Booklist.add(newBook);
     }
+
+    public static void showUsers (){
+        int ID = 0;
+        for (Users user : Library.getUserlist()){ //tipoobjeto loquesea: lista
+            System.out.println("| ID: "+ (ID+1)+" | code: "+user.getId()+" | Name: "+user.getName()+" | Lastname: "+user.getLastname()+" | Age: "+user.getAge());
+            ID++;
+        }
+    }
     public static void rentABook(){
         //listar clientes y seleccionar uno
         System.out.println("Select the client who wants to rent a Book");
-        //System.out.printf()
-        //%d int %f float y double  %c 'a' %s "hello
-        int ID = 0;
-        //id name lastname age
-        for ( Users user : Userlist){
-            System.out.println("| ID "+(ID+1)+ " Id: "+ user.getId()+ " Name: "+user.getName()+" Lastname: "+user.getLastname()+" Age: "+user.getAge());
-            ID++;
-        }
+            showUsers();
         int option = ConsoleReader.sc.nextInt();
         option--;
         Users Userselected = Library.getUserlist().get(option);
@@ -48,7 +49,7 @@ public class Library {
         //mostrar solo titulos disponibles
         ArrayList<Books> availableBooks = new ArrayList<>();
         for(Books book : Booklist){ //objeto loquesea : lista
-            if(book.isItsAvailable()==true) {
+            if(book.isItsAvailable()) {
                 System.out.println("| ID " + (id + 1) + " Id: " + book.getId() + " Title: " + book.getTitle() + " Author: " + book.getAuthor() + " Publication Year: " + book.getYear());
             }
             id++;
@@ -84,6 +85,45 @@ public class Library {
             ID++;
         }
     }
+
+    public static void buyABook(){
+        System.out.println("Select the client who wants to buy a Book: ");
+        int ID = 0;
+        for (Users user : Library.getUserlist()){ //tipoobjeto loquesea: lista
+            System.out.println("| ID: "+ (ID+1)+" | code: "+user.getId()+" | Name: "+user.getName()+" | Lastname: "+user.getLastname()+" | Age: "+user.getAge());
+            ID++;
+        }
+       int selection = ConsoleReader.sc.nextInt();
+        selection--;
+        Users userSelected= Userlist.get(selection);
+        System.out.println("Select the book the client wants to buy: ");
+        showBooksAvailable();
+        int input = ConsoleReader.sc.nextInt();
+        input --;
+        Books bookSelected = Booklist.get(input);
+        System.out.println("Enter the price: ");
+        double price = ConsoleReader.sc.nextDouble();
+        if (price<0){
+            System.out.println("Invalid value");
+            return;
+        }
+        System.out.println("The user "+userSelected.getName()+"  "+userSelected.getLastname()+" has bought "+bookSelected.getTitle()+" by $ "+price);
+
+        bookSelected.setItsAvailable(false);
+        userSelected.setHasBoughtABook(true);
+        Booklist.remove(input);
+
+    }
+    public static void showBooksAvailable(){
+        int ID=0;
+        for(Books availables : Library.getBooklist()){
+            if (availables.isItsAvailable()){
+                System.out.println("|ID: "+ (ID+1)+"code: "+availables.getId()+" | Title: "+availables.getTitle()+" | Author: "+availables.getAuthor()+" | Publication year: "+availables.getYear());
+            }
+            ID++;
+        }
+
+    }
     public static void testingInfo(){
         ///Users
         String Id1 = IdGenerator.createId();
@@ -101,15 +141,19 @@ public class Library {
         String IdB3 = IdGenerator.createBookId();
         String IdB4 = IdGenerator.createBookId();
         String IdB5 = IdGenerator.createBookId();
+        String IdB6 = IdGenerator.createBookId();
         Books book1 = new Books(IdB1, "Muerte en el Nilo", "Agatha Chriestie", 1937);
         Books book2 = new Books(IdB2, "Las memorias de Sherlock Holmes", "Arthur Conan Doyle", 1894);
         Books book3 = new Books(IdB3, "El pulgar del violinista", "Sam Kean", 2013);
         Books book4 = new Books(IdB4, "Momo", "Michael Ende", 1972);
         Books book5 = new Books(IdB5, "Salvar el fuego", "Guillermo Arriaga", 2020);
+        Books book6 = new Books(IdB6, "Ilusiones", "Richard Bach", 1977);
+
         Library.addBook(book1);
         Library.addBook(book2);
         Library.addBook(book3);
         Library.addBook(book4);
         Library.addBook(book5);
+        Library.addBook(book6);
     }
 }

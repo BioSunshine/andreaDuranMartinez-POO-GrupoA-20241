@@ -3,22 +3,24 @@ public class Showlists {
     public static void menuLists(){
         boolean band =true;
         do{
-            System.out.println("\t\t>>>Welcome to database<<<\n What do you want to check?\n 1)See registered Users\n" +
-                    " 2)See users that have rented a least a Book \n 3)See All the Books\n 4)See Books available\n 5)See rented books\n" +
-                    " 0) Return");
+            System.out.println("""
+                    \t\t>>>Welcome to database<<<
+                     What do you want to check?
+                     1)See registered Users
+                     2)See users that have rented a least a Book\s
+                     3)See All the Books
+                     4)See Books available
+                     5)See rented books
+                     6)See users that have bought a book\s
+                     0) Return""");
             int option = ConsoleReader.sc.nextInt();
             switch (option){
-                case 1-> {//See Users
-                    int ID = 0;
-                    for (Users user : Library.getUserlist()){ //tipoobjeto loquesea: lista
-                        System.out.println("| ID: "+ (ID+1)+" | code: "+user.getId()+" | Name: "+user.getName()+" | Lastname: "+user.getLastname()+" | Age: "+user.getAge());
-                        ID++;
-                    }
-                }
+                case 1-> //See Users
+                        Library.showUsers();
                 case 2 -> {//see users have rented books. Preguntar si también es una lista de comprados, no solo rentado
                     int ID =0;
                     for (Users user : Library.getUserlist()){
-                        if(user.isHasRentedBook()==true){
+                        if(user.isHasRentedBook()){
                         System.out.println("|ID: "+(ID+1)+" | code: "+user.getId()+" | Name: "+user.getName()+" | Lastname: "+user.getLastname()+ " | Age: "+user.getAge());
                         }
                     ID++;
@@ -31,32 +33,31 @@ public class Showlists {
                         ID++;
                     }
                 }
-                case 4 ->{//Libros disponibles
-                    int ID=0;
-                    for(Books availables : Library.getBooklist()){
-                        if (availables.isItsAvailable()==true){
-                            System.out.println("|ID: "+ (ID+1)+"code: "+availables.getId()+" | Title: "+availables.getTitle()+" | Author: "+availables.getAuthor()+" | Publication year: "+availables.getYear());
-                        }
-                        ID++;
-                    }
-                }
+                case 4 ->//Libros disponibles
+                        Library.showBooksAvailable();
                 case 5 ->{ //libros rentados
                     int ID=0;
                     for(Books rentedBooks : Library.getBooklist()){
-                        if (rentedBooks.isItsAvailable()==false){
+                        if (!rentedBooks.isItsAvailable()){
                             System.out.println("|ID: "+(ID+1)+"code: "+rentedBooks.getId()+" | Title: "+rentedBooks.getTitle()+"| Author: "+rentedBooks.getAuthor()+" | Publication year: "+rentedBooks.getYear());
                         }
                         ID++;
                     }
                 }
-                case 0->{
-                band=false;
+                case 6 ->{//users have bought a book
+                    int ID =0;
+                    for (Users user : Library.getUserlist()){
+                        if(user.isHasBoughtABook()){
+                            System.out.println("|ID: "+(ID+1)+" | code: "+user.getId()+" | Name: "+user.getName()+" | Lastname: "+user.getLastname()+ " | Age: "+user.getAge());
+                        }
+                        ID++;
+                    }
+
                 }
-                default -> {
-                    System.out.println("Not a valid input...");
-                }
+                case 0-> band=false;
+                default -> System.out.println("Not a valid input...");
             }
 
-        }while (band==true);
+        }while (band);
     }
 }

@@ -22,6 +22,7 @@ public class Books {
                 '}';
     }
     public static void registerBook(){
+        ConsoleReader.sc.nextLine();
         System.out.println("Title : ");
         String title = ConsoleReader.sc.nextLine();
         System.out.println("Author : ");

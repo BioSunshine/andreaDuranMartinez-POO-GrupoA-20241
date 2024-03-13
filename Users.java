@@ -8,6 +8,7 @@ public class Users {
     private static ArrayList<Books> listRentedBooks = new ArrayList<>();
     private boolean hasRentedBook;
     private int timesRented;
+    private boolean hasBoughtABook; //comprado un libro
 
     public Users(String id, String name, String lastname, int age) {
         this.id = id;
@@ -34,6 +35,14 @@ public class Users {
                 ", lastname='" + lastname + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    public boolean isHasBoughtABook() {
+        return hasBoughtABook;
+    }
+
+    public void setHasBoughtABook(boolean hasBoughtABook) {
+        this.hasBoughtABook = hasBoughtABook;
     }
 
     public String getId() {
@@ -103,6 +112,8 @@ public class Users {
         System.out.println("The book has been returned");
 
     }
+
+
 
 
 }
