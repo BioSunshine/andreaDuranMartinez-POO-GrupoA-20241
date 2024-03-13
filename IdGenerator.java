@@ -1,24 +1,24 @@
 import java.util.Random;
 
 public class IdGenerator {
-    public static long createId(){
+    public static String createId(){
 
-        long idNumber = 25;
+        String idNumber = "24";
 
         Random ran = new Random();
         for (int i =0; i<3; i++){
-            long idNumber2 = ran.nextLong(10);
+            int idNumber2 = ran.nextInt(10);
             idNumber+=idNumber2;
         }
         return idNumber;
     }
-    public static long createBookId(){
-        long idNumber = 1;
-
+    public static String createBookId(){
+        String idNumber = "12";
+        int Booknumber;
         Random ran = new Random();
         for (int i =0; i<3; i++){
-            long idNumber2 = ran.nextLong(10);
-            idNumber+=idNumber2;
+             Booknumber = ran.nextInt(10);
+             idNumber+=Booknumber;
         }
         return idNumber;
     }

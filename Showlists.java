@@ -4,8 +4,8 @@ public class Showlists {
         boolean band =true;
         do{
             System.out.println("\t\t>>>Welcome to database<<<\n What do you want to check?\n 1)See registered Users\n" +
-                    " \n 2)See users that have rented a least a Book \n 3)See All the Books\n 4)See Books available\n 5)See rented books\n" +
-                    "0) Return");
+                    " 2)See users that have rented a least a Book \n 3)See All the Books\n 4)See Books available\n 5)See rented books\n" +
+                    " 0) Return");
             int option = ConsoleReader.sc.nextInt();
             switch (option){
                 case 1-> {//See Users
@@ -27,7 +27,7 @@ public class Showlists {
                 case 3 -> {//All the books
                     int ID=0;
                     for(Books book : Library.getBooklist()){
-                        System.out.println(" | ID: "+(ID+1)+"code: "+book.getId()+" | Title: "+book.getTitle()+" | Author: "+book.getAuthor()+" | Publication year: "+book.getYear());
+                        System.out.println(" | ID: "+(ID+1)+" | code: "+book.getId()+" | Title: "+book.getTitle()+" | Author: "+book.getAuthor()+" | Publication year: "+book.getYear());
                         ID++;
                     }
                 }

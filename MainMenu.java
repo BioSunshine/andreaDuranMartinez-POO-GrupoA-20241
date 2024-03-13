@@ -13,6 +13,7 @@ public class MainMenu {
     opcion listar libros rentados
     menu usuario pueda interactuar con el y seleccionar las opciones deseadas
      */
+        Library.testingInfo();
         boolean band=true;
         do{
             System.out.println("""
@@ -21,16 +22,21 @@ public class MainMenu {
 
                      \tWhat do you want to do?
 
-                    \t1) Register User
+                     \t1) Register User
                      \t2) Register a Book
                      \t3) Rent a Book
-                     \t4) See the lists \t0) Exit system""");
+                     \t4) Return a Book
+                     \t5) See the lists 
+                     \t0) Exit system""");
             int option= ConsoleReader.sc.nextInt();
             switch (option){
-                case 1 -> UsersController.createUser();
-                case 2 -> BooksController.registerBook();
+                case 1 -> {ConsoleReader.sc.nextLine();
+                            UsersController.createUser();}
+                case 2 -> {ConsoleReader.sc.nextLine();
+                    Books.registerBook();}
                 case 3 -> Library.rentABook();
-                case 4 -> Showlists.menuLists();
+                case 4 -> Library.returnBook();
+                case 5 -> Showlists.menuLists();
                 case 0 -> band=false;
                 default -> System.out.println("Invalid input...");
             }

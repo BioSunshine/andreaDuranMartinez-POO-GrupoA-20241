@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Users {
-    private long id;
+    private String id;
     private String name;
     private String lastname;
     private int age;
@@ -9,7 +9,7 @@ public class Users {
     private boolean hasRentedBook;
     private int timesRented;
 
-    public Users(long id, String name, String lastname, int age) {
+    public Users(String id, String name, String lastname, int age) {
         this.id = id;
         this.name = name;
         this.lastname =lastname;
@@ -24,6 +24,8 @@ public class Users {
         this.lastname = lastname;
     }
 
+
+
     @Override
     public String toString() {
         return "Users{" +
@@ -34,11 +36,11 @@ public class Users {
                 '}';
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -86,7 +88,19 @@ public class Users {
         listRentedBooks.add(newBook);
     }
 
-    public void buyABook(){
+    public void returnBook(){
+        System.out.println("Select the book the client wants to return");
+        int count=0;
+        for(Books book : listRentedBooks){
+            System.out.println("| ID " + (count + 1) + " Id: " +  book.getId()+" Title: " + book.getTitle() + " Author: " + book.getAuthor() + " Publication Year: " + book.getYear());
+        count++;
+        }
+        int selection = ConsoleReader.sc.nextInt();
+        selection--;
+        listRentedBooks.remove(selection);
+        Books bookSelected = listRentedBooks.get(selection);
+        bookSelected.setItsAvailable(true);
+        System.out.println("The book has been returned");
 
     }
 

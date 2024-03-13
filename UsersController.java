@@ -18,9 +18,10 @@ public class UsersController {
                 System.out.println("Not possible to register with that age ");
                 return;
             }
-            long id = IdGenerator.createId();
+            String id = IdGenerator.createId();
             Users newUser = new Users(id, name,lastname,age);
             Library.addUser(newUser);
+            System.out.println("User created successfully");
         }
     }
 }

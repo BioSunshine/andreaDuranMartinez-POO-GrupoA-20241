@@ -1,11 +1,11 @@
 public class Books {
-    private long id;
+    private String  id;
     private String title;
     private String author;
     private int year;
     private boolean itsAvailable = true;
 
-    public Books(long id, String title, String author, int year) {
+    public Books(String id, String title, String author, int year) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -21,6 +21,26 @@ public class Books {
                 ", year=" + year +
                 '}';
     }
+    public static void registerBook(){
+        System.out.println("Title : ");
+        String title = ConsoleReader.sc.nextLine();
+        System.out.println("Author : ");
+        String author = ConsoleReader.sc.nextLine();
+        if (title.isEmpty()&&author.isEmpty()){
+            System.out.println("Invalid input, please introduce correctly the data");
+            return;
+        }
+        System.out.println("Publication year : ");
+        int year = ConsoleReader.sc.nextInt();
+        if(year>2024){
+            System.out.println("Invalid input, please verify");
+            return;
+        }
+        String id= IdGenerator.createBookId();
+        Books newBook = new Books(id, title, author, year );
+        Library.addBook(newBook);
+        System.out.println("Book registered succesfully");
+    }
 
     public int getYear() {
         return year;
@@ -30,11 +50,11 @@ public class Books {
         this.year = year;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
