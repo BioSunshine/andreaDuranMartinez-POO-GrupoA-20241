@@ -40,22 +40,24 @@ class Showlists:
 
     @staticmethod
     def see_rented_users():
-        id = 0
+        identificator = 0
         for user in Library.get_userlist():
             if user.is_has_rented_book():
                 print("|id: " + str(
-                    id + 1) + " | code: " + user.get_id() + " | Name: " + user.get_name() + " | Lastname: " + user.get_lastname() + " | Age: " + str(
+                    identificator + 1) + " | code: " + user.get_id() + " | Name: " + user.get_name() +
+                      " | Lastname: " + user.get_lastname() + " | Age: " + str(
                     user.get_age()))
-            id += 1
+            identificator += 1
 
     @staticmethod
     def see_all_books():
-        id = 0
+        identifier = 0
         for book in Library.get_booklist():
             print(" | id: " + str(
-                id + 1) + " | code: " + book.get_id() + " | Title: " + book.get_title() + " | Author: " + book.get_author() + " | Publication year: " + str(
+                identifier + 1) + " | code: " + book.get_id() + " | Title: " + book.get_title() +
+                  " | Author: " + book.get_author() + " | Publication year: " + str(
                 book.get_year()))
-            id += 1
+            identifier += 1
 
     @staticmethod
     def see_available_books():
@@ -63,20 +65,22 @@ class Showlists:
 
     @staticmethod
     def see_rented_books():
-        id = 0
+        identifier = 0
         for rented_books in Library.get_booklist():
             if not rented_books.is_its_available():
                 print("|id: " + str(
-                    id + 1) + " | code: " + rented_books.get_id() + " | Title: " + rented_books.get_title() + "| Author: " + rented_books.get_author() + " | Publication year: " + str(
+                    identifier + 1) + " | code: " + rented_books.get_id() + " | Title: " + rented_books.get_title() +
+                      "| Author: " + rented_books.get_author() + " | Publication year: " + str(
                     rented_books.get_year()))
-            id += 1
+            identifier += 1
 
     @staticmethod
     def see_bought_users():
-        id = 0
+        identifier = 0
         for user in Library.get_userlist():
             if user.is_has_bought_a_book():
                 print("|id: " + str(
-                    id + 1) + " | code: " + user.get_id() + " | Name: " + user.get_name() + " | Lastname: " + user.get_lastname() + " | Age: " + str(
+                    identifier + 1) + " | code: " + user.get_id() + " | Name: " + user.get_name() +
+                      " | Lastname: " + user.get_lastname() + " | Age: " + str(
                     user.get_age()))
-            id += 1
+            identifier += 1

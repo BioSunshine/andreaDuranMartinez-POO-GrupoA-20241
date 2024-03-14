@@ -1,7 +1,7 @@
 import random
 
 
-class IdGenerator:
+class CodeGenerator:
     @staticmethod
     def create_id():
         id_number = "24"

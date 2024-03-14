@@ -1,6 +1,6 @@
 class Users:
-    def __init__(self, id, name, lastname, age):
-        self.id = id
+    def __init__(self, code, name, lastname, age):
+        self.id = code
         self.name = name
         self.lastname = lastname
         self.age = age
@@ -45,7 +45,8 @@ class Users:
         print("Select the book the client wants to return")
         count = 0
         for book in self.list_rented_books:
-            print(f"| ID {count + 1} Id: {book.get_id()} Title: {book.get_title()} Author: {book.get_author()} Publication Year: {book.get_year()}")
+            print(f"| ID {count + 1} Id: {book.get_id()} Title: {book.get_title()} "
+                  f"Author: {book.get_author()} Publication Year: {book.get_year()}")
             count += 1
         selection = int(input()) - 1
         book_selected = self.list_rented_books[selection]

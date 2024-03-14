@@ -1,4 +1,4 @@
-from idgenerator import IdGenerator
+from code_generator import CodeGenerator
 from users import Users
 from books import Books
 
@@ -25,11 +25,11 @@ class Library:
 
     @staticmethod
     def show_users():
-        id = 0
+        identifier = 0
         for user in Library.get_userlist():
             print(
-                f"| ID: {id + 1} | code: {user.get_id()} | Name: {user.get_name()} | Lastname: {user.get_lastname()} | Age: {user.get_age()}")
-            id += 1
+                f"| ID: {identifier + 1} | code: {user.get_id()} | Name: {user.get_name()} | Lastname: {user.get_lastname()} | Age: {user.get_age()}")
+            identifier += 1
 
     @staticmethod
     def rent_a_book():
@@ -40,12 +40,12 @@ class Library:
         print(
             f"You choosed: code: {user_selected.get_id()} | Name: {user_selected.get_name()} | Lastname: {user_selected.get_lastname()} | Age: {user_selected.get_age()}")
         print("Choose the book the client wants to rent: ")
-        id = 0
+        identifier = 0
         for book in Library.__booklist:
             if book.is_its_available():
                 print(
-                    f"| ID {id + 1} Id: {book.get_id()} Title: {book.get_title()} Author: {book.get_author()} Publication Year: {book.get_year()}")
-            id += 1
+                    f"| ID {identifier + 1} Id: {book.get_id()} Title: {book.get_title()} Author: {book.get_author()} Publication Year: {book.get_year()}")
+            identifier += 1
         selection = int(input()) - 1
         bookselected = Library.__booklist[selection]
         if not bookselected.is_its_available():
@@ -68,12 +68,12 @@ class Library:
 
     @staticmethod
     def show_users_have_rented_books():
-        id = 0
+        identifier = 0
         for user in Library.get_userlist():
             if user.has_rented_book():
                 print(
-                    f"| id: {id + 1} | code: {user.get_id()} | Name: {user.get_name()} | Lastname: {user.get_lastname()} | Age: {user.get_age()}")
-            id += 1
+                    f"| id: {identifier + 1} | code: {user.get_id()} | Name: {user.get_name()} | Lastname: {user.get_lastname()} | Age: {user.get_age()}")
+            identifier += 1
 
     @staticmethod
     def buy_a_book():
@@ -114,9 +114,9 @@ class Library:
 
     @staticmethod
     def testing_info():
-        id_1 = IdGenerator.create_id()
-        id_2 = IdGenerator.create_id()
-        id_3 = IdGenerator.create_id()
+        id_1 = CodeGenerator.create_id()
+        id_2 = CodeGenerator.create_id()
+        id_3 = CodeGenerator.create_id()
 
         user_1 = Users(id_1, "Alejandro", "Montejano", 20)
         user_2 = Users(id_2, "Atziri", "Mancilla", 27)
@@ -126,12 +126,12 @@ class Library:
         Library.add_user(user_2)
         Library.add_user(user_3)
 
-        id_b1 = IdGenerator.create_book_id()
-        id_b2 = IdGenerator.create_book_id()
-        id_b3 = IdGenerator.create_book_id()
-        id_b4 = IdGenerator.create_book_id()
-        id_b5 = IdGenerator.create_book_id()
-        id_b6 = IdGenerator.create_book_id()
+        id_b1 = CodeGenerator.create_book_id()
+        id_b2 = CodeGenerator.create_book_id()
+        id_b3 = CodeGenerator.create_book_id()
+        id_b4 = CodeGenerator.create_book_id()
+        id_b5 = CodeGenerator.create_book_id()
+        id_b6 = CodeGenerator.create_book_id()
 
         book_1 = Books(id_b1, "Muerte en el Nilo", "Agatha Chriestie", 1937)
         book_2 = Books(id_b2, "Las memorias de Sherlock Holmes", "Arthur Conan Doyle", 1894)

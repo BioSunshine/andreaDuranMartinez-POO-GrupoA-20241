@@ -1,10 +1,11 @@
 from library import Library
-from idgenerator import IdGenerator
+from code_generator import CodeGenerator
 
 
 class Books:
-    def __init__(self, id, title, author, year):
-        self.id = id
+
+    def __init__(self, identifier, title, author, year):
+        self.id = identifier
         self.title = title
         self.author = author
         self.year = year
@@ -23,8 +24,8 @@ class Books:
             print("Invalid input, please verify")
             return
 
-        id = IdGenerator.create_book_id()
-        new_book = Books(id, title, author, year)
+        identifier = CodeGenerator.create_book_id()
+        new_book = Books(identifier, title, author, year)
         Library.add_book(new_book)
         print("Book registered successfully")
 
