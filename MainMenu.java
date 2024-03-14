@@ -1,19 +1,11 @@
+import java.util.Scanner;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class MainMenu {
     public static void main(String[] args) {
-    /* Se desea crear un sistema para una librería
-    3 clases. Libreria debe contener arraylist libros y arraylist usuarios
-    El sistema debe tener una opción para registrar usuarios
-    El sistema debe tener una opción para registrar libros
-    El sistema debe tener una opción para realizar renta de libro
-    Usuario puede rentar uno o muchos libros pero un libro puede ser rentado solo por un usuario
-    Opción para listar todos usuarios registrados
-    Opcion listar todos libros registrados
-    opcion listar todos usuarios que hayan comprado al menos un libro
-    opcion listar libros no rentados
-    opcion listar libros rentados
-    menu usuario pueda interactuar con el y seleccionar las opciones deseadas
-     */
-        Library.testingInfo();
+        Library library = new Library();
+        library.testingInfo();
         boolean band=true;
         do{
             System.out.println("""
@@ -27,19 +19,31 @@ public class MainMenu {
                      \t3) Rent a Book
                      \t4) Return a Book
                      \t5) Buy a Book
-                     \t6) See the lists
+                     \t6) See registered Users
+                     \t7)See users that have rented a least a Book\s
+                     \t8)See All the Books
+                     \t9)See Books available
+                     \t10)See rented books
+                     \t11)See users that have bought a book\s
                      \t0) Exit system""");
-            int option= ConsoleReader.sc.nextInt();
+            Scanner sc = new Scanner(System.in);
+            int option= sc.nextInt();
             switch (option){
-                case 1 -> UsersController.createUser();
-                case 2 -> Books.registerBook();
-                case 3 -> Library.rentABook();
-                case 4 -> Library.returnBook();
-                case 5 -> Library.buyABook();
-                case 6 -> Showlists.menuLists();
+                case 1 -> library.createUser();
+                case 2 -> library.registerBook();
+                case 3 -> library.rentABook();
+                case 4 -> library.returnBook();
+                case 5 -> library.buyABook();
+                case 6 -> {library.showUsers();}
+                case 7 -> {library.showUsersHaveRentedBooks();}
+                case 8 -> {library.showAllBooks();}
+                case 9 -> {library.showBooksAvailable();}
+                case 10 -> {library.showRentedBooks();}
+                case 11 -> {library.showUserWithRentedBooks();}
                 case 0 -> band=false;
                 default -> System.out.println("Invalid input...");
             }
         }while(band);
     }
+
 }
