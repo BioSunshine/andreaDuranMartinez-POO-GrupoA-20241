@@ -27,7 +27,7 @@ class MainMenu:
             if option == 1:
                 UsersController.create_user()
             elif option == 2:
-                Books.register_book()
+                Library.register_book()
             elif option == 3:
                 Library.rent_a_book()
             elif option == 4:

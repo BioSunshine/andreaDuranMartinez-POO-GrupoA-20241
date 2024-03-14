@@ -1,4 +1,4 @@
-from library import Library
+
 from code_generator import CodeGenerator
 
 
@@ -10,25 +10,7 @@ class Books:
         self.author = author
         self.year = year
         self.its_available = True
-
-    @staticmethod
-    def register_book():
-        title = input("Title: ")
-        author = input("Author: ")
-        if not title or not author:
-            print("Invalid input, please provide correct data")
-            return
-
-        year = int(input("Publication year: "))
-        if year > 2024:
-            print("Invalid input, please verify")
-            return
-
-        identifier = CodeGenerator.create_book_id()
-        new_book = Books(identifier, title, author, year)
-        Library.add_book(new_book)
-        print("Book registered successfully")
-
+    
     def get_year(self):
         return self.year
 

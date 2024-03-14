@@ -67,14 +67,25 @@ class Library:
         input_ = int(input()) - 1
         user_selected = Library.__userlist[input_]
         print("Which book wants to return?")
-        user_selected.return_book()
+        count = 0
+        for book in user_selected.list_rented_books:
+            print(f"| ID {count + 1} Id: {book.get_id()} Title: {book.get_title()} "
+                  f"Author: {book.get_author()} Publication Year: {book.get_year()}")
+            count += 1
+        selection = int(input()) - 1
+        book_selected = user_selected.list_rented_books[selection]
+        book_selected.set_its_available(True)
+        del user_selected.list_rented_books[selection]
+        print("The book has been returned")
+
 
     @staticmethod
     def show_users_have_rented_books():
         identifier = 0
         for user in Library.get_userlist():
-            if user.has_rented_book():
-                print(
+            if not user.get_list_rented_books():
+                continue
+            print(
                     f"| id: {identifier + 1} | code: {user.get_id()} | Name: {user.get_name()} "
                     f"| Lastname: {user.get_lastname()} | Age: {user.get_age()}")
             identifier += 1
@@ -105,9 +116,10 @@ class Library:
         print(
             f"The user {user_selected.get_name()}  {user_selected.get_lastname()} "
             f"has bought {book_selected.get_title()} by $ {price}")
+        Library.__booklist.remove(input_)
         book_selected.set_its_available(False)
         user_selected.set_has_bought_a_book(True)
-        Library.__booklist.remove(input_)
+       
 
     @staticmethod
     def show_books_available():
@@ -154,3 +166,21 @@ class Library:
         Library.add_book(book_4)
         Library.add_book(book_5)
         Library.add_book(book_6)
+
+    @staticmethod
+    def register_book():
+        title = input("Title: ")
+        author = input("Author: ")
+        if not title or not author:
+            print("Invalid input, please provide correct data")
+            return
+
+        year = int(input("Publication year: "))
+        if year > 2024:
+            print("Invalid input, please verify")
+            return
+
+        identifier = CodeGenerator.create_book_id()
+        new_book = Books(identifier, title, author, year)
+        Library.add_book(new_book)
+        print("Book registered successfully")

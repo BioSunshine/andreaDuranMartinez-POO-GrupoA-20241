@@ -1,3 +1,7 @@
+from code_generator import CodeGenerator
+from library import Library
+from users import Users
+
 class UsersController:
     @staticmethod
     def create_user():
@@ -14,7 +18,7 @@ class UsersController:
             print("Not possible to register with that age")
             return
 
-        id = IdGenerator.create_id()  # Asegúrate de tener la clase IdGenerator definida
+        id = CodeGenerator.create_id()  # Asegúrate de tener la clase IdGenerator definida
         new_user = Users(id, name, lastname, age)  # Asegúrate de tener la clase Users definida
         Library.add_user(new_user)  # Asegúrate de tener la clase Library definida
         print("User created successfully")

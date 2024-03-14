@@ -28,7 +28,8 @@ class Library:
         identifier = 0
         for user in Library.get_userlist():
             print(
-                f"| ID: {identifier + 1} | code: {user.get_id()} | Name: {user.get_name()} | Lastname: {user.get_lastname()} | Age: {user.get_age()}")
+                f"| ID: {identifier + 1} | code: {user.get_id()} | Name: {user.get_name()} "
+                f"| Lastname: {user.get_lastname()} | Age: {user.get_age()}")
             identifier += 1
 
     @staticmethod
@@ -38,13 +39,15 @@ class Library:
         option = int(input()) - 1
         user_selected = Library.get_userlist()[option]
         print(
-            f"You choosed: code: {user_selected.get_id()} | Name: {user_selected.get_name()} | Lastname: {user_selected.get_lastname()} | Age: {user_selected.get_age()}")
+            f"You choosed: code: {user_selected.get_id()} | Name: {user_selected.get_name()} "
+            f"| Lastname: {user_selected.get_lastname()} | Age: {user_selected.get_age()}")
         print("Choose the book the client wants to rent: ")
         identifier = 0
         for book in Library.__booklist:
             if book.is_its_available():
                 print(
-                    f"| ID {identifier + 1} Id: {book.get_id()} Title: {book.get_title()} Author: {book.get_author()} Publication Year: {book.get_year()}")
+                    f"| ID {identifier + 1} Id: {book.get_id()} Title: {book.get_title()} "
+                    f"Author: {book.get_author()} Publication Year: {book.get_year()}")
             identifier += 1
         selection = int(input()) - 1
         bookselected = Library.__booklist[selection]
@@ -72,17 +75,19 @@ class Library:
         for user in Library.get_userlist():
             if user.has_rented_book():
                 print(
-                    f"| id: {identifier + 1} | code: {user.get_id()} | Name: {user.get_name()} | Lastname: {user.get_lastname()} | Age: {user.get_age()}")
+                    f"| id: {identifier + 1} | code: {user.get_id()} | Name: {user.get_name()} "
+                    f"| Lastname: {user.get_lastname()} | Age: {user.get_age()}")
             identifier += 1
 
     @staticmethod
     def buy_a_book():
         print("Select the client who wants to buy a Book: ")
-        id = 0
+        identifier = 0
         for user in Library.get_userlist():
             print(
-                f"| id: {id + 1} | code: {user.get_id()} | Name: {user.get_name()} | Lastname: {user.get_lastname()} | Age: {user.get_age()}")
-            id += 1
+                f"| id: {identifier + 1} | code: {user.get_id()} | Name: {user.get_name()} "
+                f"| Lastname: {user.get_lastname()} | Age: {user.get_age()}")
+            identifier += 1
         selection = int(input()) - 1
         user_selected = Library.__userlist[selection]
         print("Select the book the client wants to buy: ")
@@ -98,19 +103,22 @@ class Library:
             print("Invalid value")
             return
         print(
-            f"The user {user_selected.get_name()}  {user_selected.get_lastname()} has bought {book_selected.get_title()} by $ {price}")
+            f"The user {user_selected.get_name()}  {user_selected.get_lastname()} "
+            f"has bought {book_selected.get_title()} by $ {price}")
         book_selected.set_its_available(False)
         user_selected.set_has_bought_a_book(True)
         Library.__booklist.remove(input_)
 
     @staticmethod
     def show_books_available():
-        id = 0
+        identifier = 0
         for availables in Library.get_booklist():
             if availables.is_its_available():
                 print(
-                    f"|id: {id + 1} | code: {availables.get_id()} | Title: {availables.get_title()} | Author: {availables.get_author()} | Publication year: {availables.get_year()}")
-            id += 1
+                    f"|id: {identifier + 1} | code: {availables.get_id()} "
+                    f"| Title: {availables.get_title()} | Author: {availables.get_author()} "
+                    f"| Publication year: {availables.get_year()}")
+            identifier += 1
 
     @staticmethod
     def testing_info():
