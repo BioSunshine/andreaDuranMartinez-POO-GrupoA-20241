@@ -1,16 +1,11 @@
-
-from code_generator import CodeGenerator
-
-
-class Books:
-
-    def __init__(self, identifier, title, author, year):
-        self.id = identifier
+class Book:
+    def __init__(self, id, title, author, year, its_available=True):
+        self.id = id
         self.title = title
         self.author = author
         self.year = year
-        self.its_available = True
-    
+        self.its_available = its_available
+
     def get_year(self):
         return self.year
 
