@@ -1,43 +1,57 @@
+import java.util.Scanner;
+
 public class MainMenu {
     public static void main(String[] args) {
-     /*Employee emple = new Employee("Juan","Perez");
-        BankAccount cun = new BankAccount(123456789,'a');
-        emple.addAccount(cun);
-        Bank.addEmployee(emple);
-        Bank.addAccount(cun);*/
-
+        Scanner sc = new Scanner(System.in);
         System.out.println("\nBievenido al banco");
         boolean flag = true;
+        Bank bank = new Bank();
 
         do {
-            System.out.println("\t >>>BANCO<<< \n1) Administrar usuarios\n2) Soy empleado y quiero operar mi(s) cuenta(s)\n0) Salir");
-            int opt = EmployeeController.sc.nextInt();
+            System.out.println("Opciones :\n1) Crear empleado\n2) Ver empleado\n3) Crear cuenta\n4) Ver cuentas\n5) Transacciones\n0) Salir");
+            int opt = sc.nextInt();
 
-            switch (opt) {
-                case 1 -> {
-                    UsersAdministration admin = new UsersAdministration();
-                    admin.AdminUsers();
+            switch (opt){
+                case 1 ->{
+                    bank.createEmployee();
                 }
-                case 2 -> {
-                    Bank Bank = new Bank();
-                    if(Bank.getEmployeeList().isEmpty()){
-                        System.out.println("Actualmente no hay nadie en el registro :[");
-                    }
-                    else {
-                        Operations operations = new Operations();
-                        operations.operateAccounts();
-                    }
+                case 2 ->{
+                    bank.seeEmployees();
                 }
+                case 3 ->{
 
-                case 0 -> {
-                    flag = false;
+                    if (bank.getEmployeeList().isEmpty()) {
+                        System.out.println("No hay empleados registrados...");
+                    } else {
+                        System.out.println(">>>Creando cuenta...");
+                        System.out.println("Numero de cuenta");
+                        long nC = sc.nextLong();
+                        System.out.println("Type");
+                        char type = sc.next().charAt(0);
+
+                        //validacion tipo de cuenta va en creacion de empleado
+                        type = Character.toUpperCase(type); // cambiamos a mayúsculas
+                        if (type != 'A' && type != 'B' && type != 'C') {
+                            System.out.println("Tipo de cuenta no válido");
+                        } else {
+                            bank.createAccount(nC, type);
+                        }
+                    }
+                }
+                case 4 ->{
+                    bank.checkAllAccounts();
+                }
+                case 5 ->{
+                    Transactions transactions = new Transactions();
+                    transactions.operationMenu(bank.getEmployeeList());
+                }
+                case 0 ->{
+                    flag=false;
                 }
                 default -> {
-                    System.out.println("invalid input :(");
+                    System.out.println("nmms no");
                 }
             }
-
-
         } while (flag);
     }
 }

@@ -1,16 +1,19 @@
+import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Scanner;
 
-public class Operations {
-    public static void operateAccounts() {
+public class Transactions {
 
+    public void operationMenu(ArrayList<Employee> employeeList) {
+        Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese su nombre");
-        String nameToCheck = ConsoleReader.sc.nextLine().toLowerCase(Locale.ROOT);
+        String nameToCheck = sc.nextLine().toLowerCase(Locale.ROOT);
         System.out.println("Ingrese su apellido");
-        String lastnameToCheck = ConsoleReader.sc.nextLine().toLowerCase();
+        String lastnameToCheck = sc.nextLine().toLowerCase();
 
         int ID = 0;
         int identifier = -1;
-        for (Employee emple : Bank.getEmployeeList()) {
+        for (Employee emple : employeeList) {
 
             if (emple.getName().toLowerCase().equals(nameToCheck) && emple.getLastname().toLowerCase().equals(lastnameToCheck)) {
                 identifier = ID;
@@ -21,7 +24,7 @@ public class Operations {
         }
 
         if (identifier > -1) {
-            Employee employeeSel = Bank.getEmployeeList().get(identifier);
+            Employee employeeSel = employeeList.get(identifier);
             int ind = 0;
 
             System.out.print(">>>Bienvenido usuario " + employeeSel.getName() + " " + employeeSel.getLastname() + " :D \nCuentas : " + "\n");
@@ -33,44 +36,43 @@ public class Operations {
                 ID2++;
             }
             System.out.println("Seleccione una cuenta (ID)");
-            int accountIndex = ConsoleReader.sc.nextInt();
+            int accountIndex = sc.nextInt();
             System.out.println("Seleccionaste: \n" +
-                    employeeSel.getListAccounts().get(accountIndex-1).getAccountNumber() +
-                    "\t. Tipo: " + employeeSel.getListAccounts().get(accountIndex-1).getType());
+                    employeeSel.getListAccounts().get(accountIndex - 1).getAccountNumber() +
+                    "\t. Tipo: " + employeeSel.getListAccounts().get(accountIndex - 1).getType());
 
             //quiero seleccionar una cuenta y despues poner un menu para ver si desea agregar o retirar dinero
             boolean band = true;
             do {
                 System.out.println("\t<<<Operaciones>>>\n1) Depositar dinero " + "\n2) Retirar dinero\n3 Consultar saldo\n0)Regresar\n");
-                int option = ConsoleReader.sc.nextInt();
+                int option = sc.nextInt();
                 switch (option) {
                     case 1 -> {
                         System.out.println("¿Cuánto desea depositar?");
-                        double amount = ConsoleReader.sc.nextDouble();
-                        employeeSel.getListAccounts().get(accountIndex-1).depositMoney(amount);
+                        double amount = sc.nextDouble();
+                        employeeSel.getListAccounts().get(accountIndex - 1).depositMoney(amount);
                     }
                     case 2 -> {
                         System.out.println("¿Cuánto desea retirar?");
-                        double amount = ConsoleReader.sc.nextDouble();
-                        employeeSel.getListAccounts().get(accountIndex-1).withdrawMoney(amount);
+                        double amount = sc.nextDouble();
+                        employeeSel.getListAccounts().get(accountIndex - 1).withdrawMoney(amount);
                     }
                     case 3 -> {
-                        System.out.println("Su saldo es de: $ " + employeeSel.getListAccounts().get(accountIndex-1).getAmount());
+                        System.out.println("Su saldo es de: $ " + employeeSel.getListAccounts().get(accountIndex - 1).getAmount());
                     }
-                    case 0 ->{
-                        band=false;
+                    case 0 -> {
+                        band = false;
                     }
                 }
-                ConsoleReader.sc.nextLine();
-            }while(band);
-            }else{
-                System.out.println("Usuario invalido :o");
-            }
-
-
-
+                sc.nextLine();
+            } while (band);
+        } else {
+            System.out.println("Usuario invalido :o");
+        }
     }
 
-    }
+
+}
+
 
 
