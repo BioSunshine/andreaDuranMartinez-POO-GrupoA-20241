@@ -1,7 +1,7 @@
 import java.util.Locale;
 
 public class Operations {
-    public static void operateAccounts() {
+    public void operateAccounts() {
 
         System.out.println("Ingrese su nombre");
         String nameToCheck = ConsoleReader.sc.nextLine().toLowerCase(Locale.ROOT);

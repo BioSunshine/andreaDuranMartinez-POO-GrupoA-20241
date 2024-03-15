@@ -1,7 +1,7 @@
 public class BankAccountController {
 
 
-    public static void crearCuenta(long nC,char type) {
+    public  void crearCuenta(long nC,char type) {
 
 
         BankAccount Cuenta = new BankAccount(nC, type);
@@ -24,7 +24,7 @@ public class BankAccountController {
         System.out.println(">>> Se asignado la cuenta "+nC+" a "+emp.getName()+" "+emp.getLastname());
     }
 
-    public static void checkAllAccounts() {
+    public  void checkAllAccounts() {
 
         for (BankAccount accounts : Bank.getBankAccounts()) {//for(Tipo_Objeto nombre_Objeto : Nombre_ArrayList){}
             System.out.println(accounts.getAccountNumber() + ", " + accounts.getType() + ", " + accounts.getAmount());
@@ -32,7 +32,7 @@ public class BankAccountController {
 
     }
 
-    public static void modifyAccount(){
+    public  void modifyAccount(){
 
         System.out.println("Que cuenta quiere modificar?");
         int ID=0;

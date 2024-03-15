@@ -2,22 +2,22 @@ import java.util.ArrayList;
 
 public class Bank {
 
-    private static ArrayList<BankAccount> BankAccounts = new ArrayList<>();//declarar el arreglo
-    private  static ArrayList<Employee> EmployeeList = new ArrayList<>();
+    private  ArrayList<BankAccount> BankAccounts = new ArrayList<>();//declarar el arreglo
+    private   ArrayList<Employee> EmployeeList = new ArrayList<>();
 
-    public static void addAccount (BankAccount newBankAccount){
+    public  void addAccount (BankAccount newBankAccount){
         BankAccounts.add(newBankAccount);
     }
 
-    public static void addEmployee(Employee employee){
+    public  void addEmployee(Employee employee){
         EmployeeList.add(employee);
     }
 
-    public static ArrayList<BankAccount> getBankAccounts() {
+    public  ArrayList<BankAccount> getBankAccounts() {
         return BankAccounts;
     }
 
-    public static ArrayList<Employee> getEmployeeList() {
+    public  ArrayList<Employee> getEmployeeList() {
         return EmployeeList;
     }
 }

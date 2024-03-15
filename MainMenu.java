@@ -15,14 +15,17 @@ public class MainMenu {
 
             switch (opt) {
                 case 1 -> {
-                    UsersAdministration.AdminUsers();
+                    UsersAdministration admin = new UsersAdministration();
+                    admin.AdminUsers();
                 }
                 case 2 -> {
+                    Bank Bank = new Bank();
                     if(Bank.getEmployeeList().isEmpty()){
                         System.out.println("Actualmente no hay nadie en el registro :[");
                     }
                     else {
-                        Operations.operateAccounts();
+                        Operations operations = new Operations();
+                        operations.operateAccounts();
                     }
                 }
 

@@ -6,7 +6,7 @@ public class UsersAdministration {
 
     static Scanner sc = new Scanner(System.in);
 
-    public static void AdminUsers() {
+    public void AdminUsers() {
         boolean band = true;
         do {
         System.out.println("\n\t<<<Administración>>>\n1) Crear empleado\n2) Crear cuenta\n3) Ver empleados\n4) Modificar cuentas\n0)Regresar\n");

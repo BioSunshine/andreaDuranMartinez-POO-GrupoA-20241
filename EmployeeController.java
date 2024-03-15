@@ -4,7 +4,7 @@ public class EmployeeController {
 
    static Scanner sc =new Scanner(System.in);
 
-    public static void createEmployee() {
+    public void createEmployee() {
 
         System.out.println("Name: ");
         String name = ConsoleReader.sc.nextLine();
@@ -35,7 +35,7 @@ public class EmployeeController {
 
     }
 
-    public static void seeEmployees(){
+    public void seeEmployees(){
         System.out.println("1) ver todos\n2) ver solo uno");
         int opt2 = sc.nextInt();
 
