@@ -10,7 +10,7 @@ class Employee:
     def set_name(self, name):
         self.name = name
 
-    def get_lastname(self):
+    def get_last_name(self):
         return self.lastname
 
     def set_lastname(self, lastname):
